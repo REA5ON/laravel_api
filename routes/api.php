@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\Api\CategoryController;
+use App\Http\Controllers\Api\PostController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -16,4 +18,14 @@ use Illuminate\Support\Facades\Route;
 
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
+});
+
+Route::controller(PostController::class)->prefix('posts')->group(function (){
+    Route::get('/', 'index');
+    Route::get('/{post}', 'show');
+});
+
+Route::controller(CategoryController::class)->prefix('categories')->group(function (){
+    Route::get('/', 'index');
+    Route::get('/{category}', 'show');
 });
