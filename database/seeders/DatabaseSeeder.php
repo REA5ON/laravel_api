@@ -15,15 +15,12 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
+        $count = 10;
 
-        // \App\Models\User::factory()->create([
-        //     'name' => 'Test User',
-        //     'email' => 'test@example.com',
-        // ]);
-        Category::factory(1)->create();
+        Category::factory($count)->create();
 
         Post::factory()
-            ->count(2)
+            ->count($count * 3)
             ->state(new Sequence(
                 fn (Sequence $sequence) => ['category_id' => Category::all()->random()],
             ))
