@@ -24,5 +24,4 @@ class PostController extends Controller
     {
         return PostResource::make($post);
     }
-
 }

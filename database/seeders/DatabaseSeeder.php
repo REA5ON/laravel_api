@@ -20,7 +20,7 @@ class DatabaseSeeder extends Seeder
         Category::factory($count)->create();
 
         Post::factory()
-            ->count($count * 3)
+            ->count($count * 100)
             ->state(new Sequence(
                 fn (Sequence $sequence) => ['category_id' => Category::all()->random()],
             ))

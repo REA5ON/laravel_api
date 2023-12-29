@@ -20,12 +20,14 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::controller(PostController::class)->prefix('posts')->group(function (){
-    Route::get('/', 'index');
-    Route::get('/{post}', 'show');
-});
+Route::controller(PostController::class)
+    ->prefix('posts')->group(function () {
+        Route::get('/', 'index');
+        Route::get('/{post}', 'show');
+    });
 
-Route::controller(CategoryController::class)->prefix('categories')->group(function (){
-    Route::get('/', 'index');
-    Route::get('/{category}', 'show');
-});
+Route::controller(CategoryController::class)
+    ->prefix('categories')->group(function () {
+        Route::get('/', 'index');
+        Route::get('/{category}', 'show');
+    });
